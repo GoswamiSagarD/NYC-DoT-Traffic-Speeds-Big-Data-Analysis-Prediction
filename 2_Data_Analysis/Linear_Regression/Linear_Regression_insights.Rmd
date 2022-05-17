@@ -1,0 +1,191 @@
+
+---
+title: "Linear_Regression_insights"
+output:
+  html_document:
+    toc: true
+---
+
+
+```{r}
+%md
+# Load the data and libraries
+For entire data
+# >> This file has to be edited to run with entire data. <<
+```
+
+
+```{r}
+library(tidyverse)
+library(gridExtra)
+library(RColorBrewer)
+```
+
+
+```{r}
+%fs
+ls "dbfs:/FileStore/tables/"
+```
+
+
+```{r}
+df = read.csv("/dbfs/FileStore/tables/df1_sample.csv")
+```
+
+
+```{r}
+colnames(df)
+```
+
+
+```{r}
+str(df)
+```
+
+
+```{r}
+# Filtering data to remove rows where 0 > SPEED > 68
+db = df %>%
+  subset (SPEED > 0) %>%
+  subset (SPEED < 68)
+```
+
+
+```{r}
+summary(db)
+```
+
+
+```{r}
+pairs(df[,c(2,6,7,9,10,11,12)])
+```
+
+
+```{r}
+%md
+# Speed vs Independent variables
+Column No.: 6, 7, 9, 10, 11, 12
+### Defining Visualization Function data_viz()
+```
+
+
+```{r}
+data_viz <- function(var) {
+
+  p1 <- df %>%
+    ggplot( aes( x = df[,var], y = SPEED ) ) +
+    labs( title = paste( colnames(df)[var], "~ SPEED" ), x = colnames(df)[var], y = "Average Traffic Speed" ) +
+    scale_fill_viridis_c() +
+    geom_bin_2d()
+  
+  p2 <- df %>%
+    ggplot(aes(x = df[,var], y = SPEED, color = df[,var]) ) +
+    geom_point() +
+    labs( title = paste( colnames(df)[var], "~ SPEED" ), x = colnames(df)[var], y = "Average Traffic Speed" ) +
+    geom_smooth(method='lm', fill = 'red', color = "red") +
+    geom_smooth(fill = 'green', color = 'green')
+  
+  p3 <- db %>%
+    ggplot( aes( x = db[,var], y = SPEED ) ) +
+    labs( title = paste( colnames(db)[var], "~ SPEED (filtered data)" ), x = colnames(db)[var], y = "Average Traffic Speed" ) +
+    scale_fill_viridis_c() +
+    geom_bin_2d()
+  
+  p4 <- db %>%
+    ggplot(aes(x = db[,var], y = SPEED, color = db[,var]) ) +
+    geom_point() +
+    labs( title = paste( colnames(db)[var], "~ SPEED (filtered data)" ), x = colnames(db)[var], y = "Average Traffic Speed" ) +
+    geom_smooth(method='lm', fill = 'red', color = "red") +
+    geom_smooth(fill = 'green', color = 'green')
+  
+  grid.arrange(p1, p2, p3, p4, nrow = 2)
+}
+```
+
+
+```{r}
+%md
+# Hour
+- The data looks well distributed accross the hours except for hours (13-18).
+- The data changes a lot throughout the hours.
+- Linear Regression does not fit the data well, compared to Spline model.
+- Filtering the SPEED column gives a slightly better fit.
+```
+
+
+```{r}
+data_viz(6)
+```
+
+
+```{r}
+%md
+# Minute
+- The data looks weirdly distributed accross the minutes (0-59). Weird banding gaps among the distribution.
+- The data is spread accross for minutes. No conceivable change through the minutes (obviously).
+- Linear Regression coincides with the Spline model. Howevere, no correlation is observed.
+```
+
+
+```{r}
+data_viz(7)
+```
+
+
+```{r}
+%md
+# Year
+- The data looks fairly distributed accross the years (2018-2021).
+- The data shows a slight upward trend for Speed as the year increases from 2018 to 2021.
+- Linear Regression completely coincides with the Spline model.
+- The slope of trend line decreases after filtering the SPEED's, however it still is significant.
+```
+
+
+```{r}
+data_viz(9)
+```
+
+
+```{r}
+%md
+# Month
+- The data looks well distributed accross the hours (0-23).
+- There is a slight decreasing trend for Speed against months.
+- Linear Regression coincides with the spline model, once the outliers are removed. However, it shows only negligible correlation.
+```
+
+
+```{r}
+data_viz(10)
+```
+
+
+```{r}
+%md
+# Day of Month
+- The data looks well distributed accross the days, except for day 1.
+- The data does not change at all throughout the days (1-31).
+- Linear Regression almost conincides with the Spline model. However, it shows very low correlation.
+```
+
+
+```{r}
+data_viz(11)
+```
+
+
+```{r}
+%md
+# Day of Year
+- The data seems to be well distributed accross the days (1-365).
+- The data has a negligible negative slope. This is ironic, becuase the Speed appears to be increasing throughout the years, while it seems to be decreasing within a year.
+- Linear Regression coincides with the Spline model.
+- Filtering the SPEED column gives a slightly better fit.
+```
+
+
+```{r}
+data_viz(12)
+```
+

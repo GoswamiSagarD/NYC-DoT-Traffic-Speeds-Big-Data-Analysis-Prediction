@@ -129,15 +129,16 @@ Speed in this dataset is the average speed between all of the link points. Trave
 | Link_Name                 | Description of Sensor location                                        | String                             |
 
 
-![](https://github.com/GoswamiSagarD/NYC-DoT-Traffic-Speeds-Big-Data-Analysis-Prediction/blob/main/Deliverables/images/Picture2.png)
-
-
-
+<p align="center">
+  <img src="https://github.com/GoswamiSagarD/NYC-DoT-Traffic-Speeds-Big-Data-Analysis-Prediction/blob/main/Deliverables/images/Picture2.png" />
+</p>
 
 
 # The System
 
-![](https://github.com/GoswamiSagarD/NYC-DoT-Traffic-Speeds-Big-Data-Analysis-Prediction/blob/main/Deliverables/images/system_architecture_diagram/system_architecture_diagram_high.png)
+<p align="center">
+  <img src="https://github.com/GoswamiSagarD/NYC-DoT-Traffic-Speeds-Big-Data-Analysis-Prediction/blob/main/Deliverables/images/system_architecture_diagram/system_architecture_diagram_high.png" />
+</p>
 
 In the finalized project, the systems framework consisted of several modules/tools used to complete the project. The data was first gathered from the source and turned into a CSV file around 25 GB in size. To make the data easier to process, this CSV file was converted into parquet files that anyone experimenting with the project could feed into the algorithms to run to avoid storage and performance problems the CSV may have provided. Most of this was done on a local machine due to the power said machines provided relative to other platforms. 
 
@@ -160,18 +161,26 @@ The project started with two techniques, those being K-means clustering and line
 
 The clustering analysis attempted to group together the remaining link points based on their speed. Each link point had 24 features for average speed for an hour in the day. A clustering evaluation was performed to determine the optimal number of clusters for the data, and by measuring those speeds and how large or small they were relative to each other, three groups were established based on speed.
 
-![](https://github.com/GoswamiSagarD/NYC-DoT-Traffic-Speeds-Big-Data-Analysis-Prediction/blob/main/Deliverables/images/Picture3.png)
-![](https://github.com/GoswamiSagarD/NYC-DoT-Traffic-Speeds-Big-Data-Analysis-Prediction/blob/main/Deliverables/images/Picture4.png)
+<p align="center">
+  <img src="https://github.com/GoswamiSagarD/NYC-DoT-Traffic-Speeds-Big-Data-Analysis-Prediction/blob/main/Deliverables/images/Picture3.png" />
+</p>
+<p align="center">
+  <img src="https://github.com/GoswamiSagarD/NYC-DoT-Traffic-Speeds-Big-Data-Analysis-Prediction/blob/main/Deliverables/images/Picture4.png" />
+</p>
 
 As observers can see above in the box-and-whisker plot, cluster 1 had 14 link points in it, making it the smallest cluster. Cluster 1 had the link points with the lowest speeds on average, typically speeds of 30 mph or below. These link points also usually had the least amount of range in their speed values relative to the other clusters’ link points, with a dozen having ranges of 10 or ;less and only two having a maximum range of 20. These link points were thought to be the ones located at the highest points of congestion, as car’s recorded as having lower speeds are usually either 1) in areas of high congestion or 2) have to be stopped due to a stop light or other obstruction.
 
 This is supported by the map seen above the plot, as most of these link points highlighted on the map are near the Manhattan borough or bridges and toll roads. Bridges can serve as a bottleneck for vehicles, as they are narrow passages that have few exits to remove excess traffic from quickly, leading to high amounts of congestion. Toll roads can serve a similar purpose, with the main difference being that cars must slow down for the toll to be paid, effectively creating traffic due to said slow down. The Manhattan borough contains many of the bridges in the NYC area, making it slow to enter and leave as a consequence.
 
-![](https://github.com/GoswamiSagarD/NYC-DoT-Traffic-Speeds-Big-Data-Analysis-Prediction/blob/main/Deliverables/images/Picture5.png)
+<p align="center">
+  <img src="https://github.com/GoswamiSagarD/NYC-DoT-Traffic-Speeds-Big-Data-Analysis-Prediction/blob/main/Deliverables/images/Picture5.png" />
+</p>
 
 Cluster 2 is the “middle” cluster, containing the second highest number of link points and the “average” speeds. This cluster typically contained link points with speeds of between 20 mph and 50 mph, with there being a few link points with speeds ranging from 10 mph to 55 mph. Most of the link points relative to cluster 1 also had larger ranges of speeds, implying a higher variance in the amount of congestion this cluster had to the first one.
 
-![](https://github.com/GoswamiSagarD/NYC-DoT-Traffic-Speeds-Big-Data-Analysis-Prediction/blob/main/Deliverables/images/Picture6.png)
+<p align="center">
+  <img src="https://github.com/GoswamiSagarD/NYC-DoT-Traffic-Speeds-Big-Data-Analysis-Prediction/blob/main/Deliverables/images/Picture6.png" />
+</p>
 
 The third cluster, cluster 3, had the largest amount of link points and the link points with A) the highest speeds, reaching up to 60 mph, and B) the largest range in values for speeds per link point. The speeds for these link points were only as low as 20 mph if that. Like cluster 2, the high range of speeds per link point may be due to these link points having a larger range of landscapes, being a mixture of bridges, highways, streets, and more.
 
@@ -181,31 +190,49 @@ The third cluster, cluster 3, had the largest amount of link points and the link
 
 The time series analysis was carried out in following steps:
 
-![](https://github.com/GoswamiSagarD/NYC-DoT-Traffic-Speeds-Big-Data-Analysis-Prediction/blob/main/Deliverables/images/Picture7.png)
+<p align="center">
+  <img src="https://github.com/GoswamiSagarD/NYC-DoT-Traffic-Speeds-Big-Data-Analysis-Prediction/blob/main/Deliverables/images/Picture7.png" />
+</p>
 
 FBProphet allowed for the creation of a historical model of speed and was then used to create a predictive model for the overall trend of speed in NYC. The analysis also created a further breakdown of data by link points and for specific time periods from by the hour to annual speeds.
 
-![](https://github.com/GoswamiSagarD/NYC-DoT-Traffic-Speeds-Big-Data-Analysis-Prediction/blob/main/Deliverables/images/Picture8.png)
+<p align="center">
+  <img src="https://github.com/GoswamiSagarD/NYC-DoT-Traffic-Speeds-Big-Data-Analysis-Prediction/blob/main/Deliverables/images/Picture8.png" />
+</p>
 
-![](https://github.com/GoswamiSagarD/NYC-DoT-Traffic-Speeds-Big-Data-Analysis-Prediction/blob/main/Deliverables/images/Picture9.png)
+<p align="center">
+  <img src="https://github.com/GoswamiSagarD/NYC-DoT-Traffic-Speeds-Big-Data-Analysis-Prediction/blob/main/Deliverables/images/Picture9.png" />
+</p>
 
 The overall trend of the data revealed the average speed stayed between 30 and 40 mph for most years, but towards April of 2020, the speed spiked to 45 mph. This was likely due to the COVID-19 pandemic leading to less cars everywhere as most people were ordered to stay home. This in turn led to less traffic and other obstructions, allowing drivers to navigate roads at higher speeds than usual.
 
-![](https://github.com/GoswamiSagarD/NYC-DoT-Traffic-Speeds-Big-Data-Analysis-Prediction/blob/main/Deliverables/images/Picture10.png)
+<p align="center">
+  <img src="https://github.com/GoswamiSagarD/NYC-DoT-Traffic-Speeds-Big-Data-Analysis-Prediction/blob/main/Deliverables/images/Picture`0.png" />
+</p>
 
-![](https://github.com/GoswamiSagarD/NYC-DoT-Traffic-Speeds-Big-Data-Analysis-Prediction/blob/main/Deliverables/images/Picture11.png)
+<p align="center">
+  <img src="https://github.com/GoswamiSagarD/NYC-DoT-Traffic-Speeds-Big-Data-Analysis-Prediction/blob/main/Deliverables/images/Picture11.png" />
+</p>
 
 The yearly pattern featured above saw a similar pattern to the overall trend: most years had a speed between 32 to 40 mph, while the year 2020 had a notable increase in speed up to 45 mph. The first graph displaying the average speed in a year by month shows that the years 2018, 2019, and even 2021 follow this pattern, but 2020 saw a spike in speed around late March and early to mid April as the pandemic’s lockdowns occurred. Said lockdowns reduced traffic as mentioned before, allowing for higher travel speeds in automobiles for that period of time. As the year went on, the speed steadily dropped to the normal range of speed between 32 mph and 40mph as people began to return to their offices. There was a slight spike in speed in 2020 in November and December that may be explained by holiday travel: while less people traveled for the Thanksgiving and Christmas holidays, a notable number still did, and with less people on the road, those who did travel could travel at higher speeds. The speed eventually returned to pre-COVID levels in March of 2021 and stayed that way throughout the year, an indicator of people returning to some semblance of pre-COVID life, including driving patterns.
 
-![](https://github.com/GoswamiSagarD/NYC-DoT-Traffic-Speeds-Big-Data-Analysis-Prediction/blob/main/Deliverables/images/Picture12.png)
+<p align="center">
+  <img src="https://github.com/GoswamiSagarD/NYC-DoT-Traffic-Speeds-Big-Data-Analysis-Prediction/blob/main/Deliverables/images/Picture12.png" />
+</p>
 
-![](https://github.com/GoswamiSagarD/NYC-DoT-Traffic-Speeds-Big-Data-Analysis-Prediction/blob/main/Deliverables/images/Picture13.png)
+<p align="center">
+  <img src="https://github.com/GoswamiSagarD/NYC-DoT-Traffic-Speeds-Big-Data-Analysis-Prediction/blob/main/Deliverables/images/Picture13.png" />
+</p>
 
 Weekly speed patterns saw most traffic occurring around Friday after a steady speed throughout the week. This was the case regardless of the year, although it should be noted that weekly speeds for 2020 were notably higher overall than for 2018, 2019, and 2021 as a result of the pandemic mentioned beforehand. The steady speeds, typically of 34 mph to 36 mph, from Monday to Thursday are likely due to this being the time of the regular work week, when most people are busy with navigating to and from work and not en masse for recreational activities. All years with the exception of 2021 to some degree saw a notable dip in speed around Friday and Saturday, going from a solid 34 mph or above to 32 mph. This is likely the consequence of the work week ending and many inhabitants utilizing transportation more than they would regularly for recreational and personal, non-work related needs.
 
-![](https://github.com/GoswamiSagarD/NYC-DoT-Traffic-Speeds-Big-Data-Analysis-Prediction/blob/main/Deliverables/images/Picture14.png)
+<p align="center">
+  <img src="https://github.com/GoswamiSagarD/NYC-DoT-Traffic-Speeds-Big-Data-Analysis-Prediction/blob/main/Deliverables/images/Picture14.png" />
+</p>
 
-![](https://github.com/GoswamiSagarD/NYC-DoT-Traffic-Speeds-Big-Data-Analysis-Prediction/blob/main/Deliverables/images/Picture15.png)
+<p align="center">
+  <img src="https://github.com/GoswamiSagarD/NYC-DoT-Traffic-Speeds-Big-Data-Analysis-Prediction/blob/main/Deliverables/images/Picture15.png" />
+</p>
 
 The speed began to rise on Sunday, likely when people weren’t doing as many recreational activities and work, leading to less people on the road. This afforded everyone who was driving on Sunday the ability to navigate the roads quicker with less obstructions.
 
@@ -215,7 +242,9 @@ After 5pm, there was a sharp decrease in speed from 36 mph to below 30 mph aroun
 
 The speed began to increase around 9pm from around 28 mph to around 42 mph. The speed then stopped increasing around 8am, when the work day began. This sharp increase in speed is probably the consequence of most people being at home during this time and resting during the night, leaving the people on night shifts as the primary demographic of drivers.
 
-![](https://github.com/GoswamiSagarD/NYC-DoT-Traffic-Speeds-Big-Data-Analysis-Prediction/blob/main/Deliverables/images/Picture16.png)
+<p align="center">
+  <img src="https://github.com/GoswamiSagarD/NYC-DoT-Traffic-Speeds-Big-Data-Analysis-Prediction/blob/main/Deliverables/images/Picture16.png" />
+</p>
 
 The final graph represents the best time-series model obtained performing hyperparameter tuning and cross-validation. Various hyperparameters were tested, and cross-validation was performed for every 180 day interval (over 4 years of data), which translates to an 8-Fold Cross Validation. It shows the future projection of how the speed may change on a yearly, weekly, and daily basis. The speed in the trend line for the year is mostly linear with a slight bump in 2020 due to the COVID-19 pandemic. If NYC’s physical and social architecture stays the same, the yearly speed will likely be the same as it has been in 2018, 2019, and 2021. 
 
@@ -227,7 +256,9 @@ The projected daily speed also matches up with the historical daily speed: high 
 
 # The Summarized Final Project Timeline
 
-![](https://github.com/GoswamiSagarD/NYC-DoT-Traffic-Speeds-Big-Data-Analysis-Prediction/blob/main/Deliverables/images/Picture17.png)
+<p align="center">
+  <img src="https://github.com/GoswamiSagarD/NYC-DoT-Traffic-Speeds-Big-Data-Analysis-Prediction/blob/main/Deliverables/images/Picture17.png" />
+</p>
 
 The project took place over the course of three months, starting in early February with the formation of the initial group up until the start of May with the final deliverable’s submission. As observers can see in the timeline above, every individual task is marked with a pin that has a tail with the assignment’s status: either being “in-progress” (blue) or “completed” (green). Additionally, there was a third category named “duration” colored gray, referring to tasks that hadn’t been started yet. 
 Each pin’s tail extends for the rough duration of the project its respective task occurred under, e.g. the progress report was planned to start around March 24th, 2022, and was worked on up until its due date, April 24th, 2022. At the time of writing this, the final report and working system is being finalized, and should be complete by the due date, making them green upon turn in. 
